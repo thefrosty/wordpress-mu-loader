@@ -1,0 +1,9 @@
+.DS_Store
+composer.lock
+phpcs.xml
+phpunit.xml
+Thumbs.db
+vendor/
+*.sql
+*.tar.gz
+*.zip
