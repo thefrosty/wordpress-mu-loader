@@ -1,0 +1,35 @@
+{
+  "name": "thefrosty/wordpress-mu-loader",
+  "type": "wordpress-muplugin",
+  "license": "GPL-2.0+",
+  "description": "Loads regular plugins from the plugins directory as must-use plugins, enforcing their activity while maintaining the typical update flow.",
+  "keywords": [
+    "wordpress",
+    "muplugin"
+  ],
+  "homepage": "https://github.com/thefrosty/wordpress-mu-loader",
+  "authors": [
+    {
+      "name": "Austin Passy",
+      "email": "thefrosty@users.noreply.github.com",
+      "homepage": "https://austin.passy.co",
+      "role": "Developer"
+    }
+  ],
+  "config": {
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.0"
+    },
+    "sort-packages": true
+  },
+  "support": {
+    "issues": "https://github.com/thefrosty/wordpress-mu-loader/issues"
+  },
+  "suggest": {
+    "roots/bedrock-autoloader": "Bedrock Autoloader will autoload plugin from the directory when in `mu-plugins/."
+  },
+  "require": {
+    "php": "^7.4 || ~8.0.0"
+  }
+}
