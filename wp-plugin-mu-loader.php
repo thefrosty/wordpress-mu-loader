@@ -8,7 +8,7 @@
  * Plugin Name: WP Plugin MU Loader
  * Plugin URI: https://gist.github.com/felixarntz/daff4006112b60dfea677ca08fc0b31c
  * Description: Loads regular plugins from the plugins directory as must-use plugins, enforcing their activity while maintaining the typical update flow.
- * Version: 2.2
+ * Version: 1.0.0
  * Author: Austin Passy
  * Author URI: https://austin.passy.co
  * License: GNU General Public License v2 (or later)
