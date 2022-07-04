@@ -3,10 +3,12 @@
 ## Installation
 
 ```bash
-composer require thefosty/wordpress-mu-loader:^2.0
+composer require thefosty/wordpress-mu-loader:^1.0
 ```
 
-Loads regular plugins from the plugins directory as must-use plugins, enforcing their activity while maintaining the typical update flow. This file will take care of all necessary logic, including preventing activation/deactivation/deletion of those plugins as regular plugins.
+Loads regular plugins from the plugins' directory as "must-use plugins", enforcing their activity 
+while maintaining the typical update flow. This file will take care of all necessary logic, 
+including preventing activation/deactivation/deletion of those plugins as regular plugins.
 
 #### Benefits
 
@@ -48,7 +50,7 @@ OR, create a git managed mu-plugin:
  * Author URI: https://github.com/thefrosty
  */
 
-namespace ChangeThisNamespace;
+namespace TheFrosty;
 
 /**
  * Returns an array of basename formatted plugins to set as "must-use".
