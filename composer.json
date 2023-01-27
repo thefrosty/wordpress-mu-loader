@@ -30,6 +30,6 @@
     "roots/bedrock-autoloader": "Bedrock Autoloader will autoload plugin from the directory when in `mu-plugins/."
   },
   "require": {
-    "php": "^7.4 || ~8.0.0"
+    "php": "^7.4 || ^8.0"
   }
 }
