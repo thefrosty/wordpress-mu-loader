@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-composer require thefosty/wordpress-mu-loader:^1.0
+composer require thefosty/wordpress-mu-loader:^1.1
 ```
 
 Loads regular plugins from the plugins' directory as "must-use plugins", enforcing their activity 
@@ -18,8 +18,8 @@ including preventing activation/deactivation/deletion of those plugins as regula
 * The plugin activation, deactivation, and uninstallation routines are executed as usual.
 
 #### Requirements
-* WordPress >= 5.0
-* PHP >= 7.4
+* WordPress >= 6.0
+* PHP >= 8.0
 
 #### Usage
 
@@ -34,7 +34,7 @@ basename string to it.
 #### Example
 
 ```php
-wp_plugin_mu_loader()->loadPlugin( 'wordpress-seo/wp-seo.php' );
+wp_plugin_mu_loader()->loadPlugin( 'custom-login/custom-login.php' );
 ```
 
 OR, create a git managed mu-plugin:
@@ -62,7 +62,8 @@ function getRequiredPlugins(): array
     return \array_filter([
         'disable-emojis/disable-emojis.php',
         'soil/soil.php',
-        'stream/stream.php',
+        'custom-login/custom-login.php',
+        'wp-login-locker/wp-login-locker.php',
     ]);
 }
 

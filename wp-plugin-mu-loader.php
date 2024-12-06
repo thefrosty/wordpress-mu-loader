@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Plugin initialization file
@@ -6,9 +8,9 @@
  * @wordpress-plugin
  * @formatter:off
  * Plugin Name: WP Plugin MU Loader
- * Plugin URI: https://gist.github.com/felixarntz/daff4006112b60dfea677ca08fc0b31c
+ * Plugin URI: https://github.com/thefrosty/wordpress-mu-loader/
  * Description: Loads regular plugins from the plugins directory as must-use plugins, enforcing their activity while maintaining the typical update flow.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Austin Passy
  * Author URI: https://austin.passy.co
  * License: GNU General Public License v2 (or later)
@@ -29,6 +31,7 @@ if (function_exists('wp_installing') && wp_installing()) {
 /**
  * Class WpPluginMuLoader
  * Responsible for loading regular plugins as must-use (MU) plugins.
+ * @ref https://gist.github.com/felixarntz/daff4006112b60dfea677ca08fc0b31c
  * @since 1.0.0
  */
 class WpPluginMuLoader
@@ -166,7 +169,7 @@ class WpPluginMuLoader
      */
     public function filterNetworkActivePlugins(?array $plugins): array
     {
-        return array_diff_key((array)$plugins, array_flip($this->plugins));
+        return array_diff_key((array) $plugins, array_flip($this->plugins));
     }
 
     /**
@@ -239,6 +242,7 @@ class WpPluginMuLoader
      * Dynamically applies the 'active' CSS class to the plugins that are loaded as MU plugins.
      * This is hacky, but there is no other way of adjusting the CSS classes.
      * @since 1.0.0
+     * @updated 1.1.0 wrap $this->plugin with array_values.
      */
     public function markPluginsActive(): void
     {
