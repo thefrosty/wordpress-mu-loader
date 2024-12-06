@@ -318,7 +318,7 @@ class WpPluginMuLoader
                 continue;
             }
 
-            wp_remote_post(
+            wp_safe_remote_post(
                 admin_url('admin-ajax.php'),
                 [
                     'timeout' => 0.01,
