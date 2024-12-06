@@ -249,7 +249,7 @@ class WpPluginMuLoader
         ?>
         <script type="text/javascript">
           (function () {
-            const plugins = JSON.parse('<?php echo wp_json_encode($this->plugins); ?>')
+            const plugins = JSON.parse('<?php echo wp_json_encode(array_values($this->plugins)); ?>')
 
             plugins.forEach(function (plugin) {
               const rows = document.querySelectorAll('tr[data-plugin="' + plugin + '"]')
@@ -318,7 +318,7 @@ class WpPluginMuLoader
                 continue;
             }
 
-            wp_remote_post(
+            wp_safe_remote_post(
                 admin_url('admin-ajax.php'),
                 [
                     'timeout' => 0.01,
