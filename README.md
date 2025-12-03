@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-composer require thefosty/wordpress-mu-loader:^1.1
+composer require thefrosty/wordpress-mu-loader:^1.1
 ```
 
 Loads regular plugins from the plugins' directory as "must-use plugins", enforcing their activity 
