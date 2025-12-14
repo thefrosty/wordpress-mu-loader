@@ -4,7 +4,7 @@
     <description>Coding Standards for the Wp Plugin Mu Loader codebase.</description>
 
     <!-- What to scan -->
-    <file>wp-plugin-mu-loader.php</file>
+    <file>src</file>
     <!-- Exclude the tests directory. -->
     <exclude-pattern>*/tests/*</exclude-pattern>
     <!-- Third-party code -->
@@ -21,9 +21,9 @@
     <arg name="tab-width" value="4"/>
     <!-- For CI, don't fail on warnings -->
     <config name="ignore_warnings_on_exit" value="1"/>
-    <config name="minimum_supported_wp_version" value="6.0"/>
-    <!-- Check for cross-version support for PHP 7.4 and higher. -->
-    <config name="testVersion" value="7.4-"/>
+    <config name="minimum_supported_wp_version" value="6.3"/>
+    <!-- Check for cross-version support for PHP 8.0 and higher. -->
+    <config name="testVersion" value="8.0-"/>
 
     <rule ref="WordPress-Docs">
         <exclude name="Generic.Commenting.DocComment.MissingShort"/>
