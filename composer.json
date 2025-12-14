@@ -34,7 +34,7 @@
     "roots/bedrock-autoloader": "Bedrock Autoloader will autoload plugin from the directory when in `mu-plugins/."
   },
   "require": {
-    "php": "^7.4 || ^8.0"
+    "php": "^8.0"
   },
   "require-dev": {
     "php-stubs/wordpress-stubs": "^6.8",
@@ -46,6 +46,7 @@
     "wp-coding-standards/wpcs": "^3.1"
   },
   "scripts": {
+    "php:features": "vendor/bin/lines features src",
     "phpcs": "vendor/bin/phpcs --standard=phpcs-ruleset.xml"
   }
 }
