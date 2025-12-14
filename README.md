@@ -18,7 +18,7 @@ including preventing activation/deactivation/deletion of those plugins as regula
 * The plugin activation, deactivation, and uninstallation routines are executed as usual.
 
 #### Requirements
-* WordPress >= 6.0
+* WordPress >= 6.3
 * PHP >= 8.0
 
 #### Usage
@@ -71,8 +71,9 @@ function getRequiredPlugins(): array
     $plugins = getRequiredPlugins();
     \array_walk($plugins, function (string $plugin_basename) {
         try {
-            if (!\function_exists('wp_plugin_mu_loader') &&
-                // You only need the file_exists/require is not using autoloading...
+            if (
+                !\function_exists('wp_plugin_mu_loader') &&
+                // You only need the file_exists/require if not using autoloading...
                 \file_exists(WPMU_PLUGIN_DIR . '/wordpress-mu-loader/wp-plugin-mu-loader.php')
             ) {
                 require_once WPMU_PLUGIN_DIR . '/wordpress-mu-loader/wp-plugin-mu-loader.php';
