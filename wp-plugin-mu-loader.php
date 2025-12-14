@@ -138,7 +138,7 @@ class WpPluginMuLoader
     {
         $this->plugins = array_merge($this->plugins, $plugins);
         add_filter('option_active_plugins', static function (array $active_plugins) use ($plugins): array {
-            return \array_merge($active_plugins, $plugins);
+            return array_merge($active_plugins, $plugins);
         }, 5);
     }
 
@@ -151,7 +151,7 @@ class WpPluginMuLoader
     public function filterActivePlugins(array $plugins): array
     {
         if (defined('WP_CLI') && WP_CLI && method_exists('WP_CLI', 'get_runner')) {
-            // vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php:1608
+            // vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php:1608.
             if (WP_CLI::get_runner()->config['skip-plugins'] === true) {
                 return $plugins;
             }
@@ -342,7 +342,7 @@ class WpPluginMuLoader
      * Listens to an AJAX request in which a plugin's deactivation routine should fire.
      * @since 1.0.0
      */
-    public function ajaxCallback()
+    public function ajaxCallback(): void
     {
         $plugin = wp_unslash(filter_input(INPUT_POST, 'basename'));
         $file = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . $plugin;
