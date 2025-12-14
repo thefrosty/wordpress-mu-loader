@@ -1,9 +1,4 @@
 .DS_Store
+vendor
+wordpress
 composer.lock
-phpcs.xml
-phpunit.xml
-Thumbs.db
-vendor/
-*.sql
-*.tar.gz
-*.zip
