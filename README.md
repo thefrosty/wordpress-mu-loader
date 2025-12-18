@@ -52,6 +52,16 @@ OR, create a git managed mu-plugin:
 
 namespace TheFrosty;
 
+use InvalidArgumentException;
+use RuntimeException;
+use function add_action;
+use function array_filter;
+use function array_walk;
+use function file_exists;
+use function function_exists;
+use function wp_plugin_mu_loader;
+use const WPMU_PLUGIN_DIR;
+
 /**
  * Returns an array of basename formatted plugins to set as "must-use".
  * @return array
@@ -59,7 +69,7 @@ namespace TheFrosty;
 function getRequiredPlugins(): array
 {
     // Add plugins to the array here...
-    return \array_filter([
+    return array_filter([
         'disable-emojis/disable-emojis.php',
         'soil/soil.php',
         'custom-login/custom-login.php',
@@ -67,19 +77,20 @@ function getRequiredPlugins(): array
     ]);
 }
 
-\add_action('muplugins_loaded', function () {
+add_action('muplugins_loaded', static function (): void {
+    if (
+        !function_exists('wp_plugin_mu_loader') &&
+        // You only need the file_exists/require if not using autoloading...
+        file_exists(WPMU_PLUGIN_DIR . '/wordpress-mu-loader/wp-plugin-mu-loader.php')
+    ) {
+        require_once WPMU_PLUGIN_DIR . '/wordpress-mu-loader/wp-plugin-mu-loader.php';
+    }
+    $loader = wp_plugin_mu_loader()
     $plugins = getRequiredPlugins();
-    \array_walk($plugins, function (string $plugin_basename) {
+    array_walk($plugins, static function (string $plugin_basename) use ($loader): void {
         try {
-            if (
-                !\function_exists('wp_plugin_mu_loader') &&
-                // You only need the file_exists/require if not using autoloading...
-                \file_exists(WPMU_PLUGIN_DIR . '/wordpress-mu-loader/wp-plugin-mu-loader.php')
-            ) {
-                require_once WPMU_PLUGIN_DIR . '/wordpress-mu-loader/wp-plugin-mu-loader.php';
-            }
-            \wp_plugin_mu_loader()->loadPlugin($plugin_basename);
-        } catch (\InvalidArgumentException | \RuntimeException $exception) {
+            $loader->loadPlugin($plugin_basename);
+        } catch (InvalidArgumentException|RuntimeException $exception) {
             // Log something here?
         }
     });
