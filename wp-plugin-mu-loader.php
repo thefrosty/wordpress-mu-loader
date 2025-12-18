@@ -30,8 +30,6 @@ if (function_exists('wp_installing') && wp_installing()) {
     return;
 }
 
-require_once __DIR__ . '/src/WpPluginMuLoader.php';
-
 /**
  * Gets the main plugin MU loader instance.
  * The instance will be created if not yet available, with its hooks registered.
@@ -44,6 +42,9 @@ function wp_plugin_mu_loader(array $plugins = []): WpPluginMuLoader
     static $loader;
 
     if ($loader === null) {
+        if (!class_exists(WpPluginMuLoader::class, false)) {
+            require __DIR__ . '/src/WpPluginMuLoader.php';
+        }
         $loader = new WpPluginMuLoader($plugins);
         add_action('plugins_loaded', static function () use ($loader): void {
             $loader->addHooks();
