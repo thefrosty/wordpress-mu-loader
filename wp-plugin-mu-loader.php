@@ -10,7 +10,7 @@ declare(strict_types=1);
  * Plugin Name: WP Plugin MU Loader
  * Plugin URI: https://github.com/thefrosty/wordpress-mu-loader/
  * Description: Loads regular plugins from the plugins directory as must-use plugins, enforcing their activity while maintaining the typical update flow.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Austin Passy
  * Author URI: https://austin.passy.co
  * License: GNU General Public License v2 (or later)
