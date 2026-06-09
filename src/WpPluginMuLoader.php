@@ -182,13 +182,13 @@ class WpPluginMuLoader
 
     /**
      * Filters the 'active_sitewide_plugins' network option, excluding plugins loaded as MU plugins.
-     * @param array|null $plugins Associative array of $plugin_basename => $timestamp pairs.
+     * @param array|false|null $plugins Associative array of $plugin_basename => $timestamp pairs.
      * @return array Filtered value of $plugins.
      * @since 1.0.0
      */
-    public function filterNetworkActivePlugins(?array $plugins): array
+    public function filterNetworkActivePlugins(mixed $plugins): array
     {
-        return array_diff_key((array) $plugins, array_flip($this->plugins));
+        return !is_array($plugins) ? [] : array_diff_key($plugins, array_flip($this->plugins));
     }
 
     /**
