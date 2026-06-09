@@ -37,7 +37,7 @@
     "php": "^8.0"
   },
   "require-dev": {
-    "php-stubs/wordpress-stubs": "^6.8",
+    "php-stubs/wordpress-stubs": "^7.0",
     "phpcompatibility/php-compatibility": "^9.3",
     "roots/wordpress": "^6.0",
     "slevomat/coding-standard": "^8.18",
